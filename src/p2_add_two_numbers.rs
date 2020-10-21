@@ -56,8 +56,7 @@
  *
  */
 
-#[allow(dead_code)]
-pub struct Solution;
+struct Solution;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
@@ -117,6 +116,7 @@ impl ListNode {
 //   }
 // }
 impl Solution {
+    #[allow(dead_code)]
     pub fn add_two_numbers(
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
