@@ -34,7 +34,6 @@
  *
  *
  */
-use std::vec::Vec;
 
 pub struct Solution;
 
@@ -74,6 +73,7 @@ pub struct Solution;
 
 // @lc code=start
 impl Solution {
+    #[allow(dead_code)]
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut wants = std::collections::HashMap::new();
         for i in 0..nums.len() {
