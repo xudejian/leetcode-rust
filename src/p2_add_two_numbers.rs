@@ -81,33 +81,30 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let mut head = Some(Box::new(ListNode::new(0)));
-        let mut current = head.as_mut();
+        let (mut lhs, mut rhs) = (l1, l2);
+        let mut head = Box::new(ListNode::new(0));
+        let mut tail = &mut head;
         let mut carry = 0;
-        let mut ml1 = l1;
-        let mut ml2 = l2;
 
-        while ml1.is_some() || ml2.is_some() {
-            let mut sum = carry;
-            if let Some(node) = ml1 {
-                sum += node.val;
-                ml1 = node.next;
+        while lhs.is_some() || rhs.is_some() {
+            if let Some(node) = lhs {
+                carry += node.val;
+                lhs = node.next;
             }
-            if let Some(node) = ml2 {
-                sum += node.val;
-                ml2 = node.next;
+            if let Some(node) = rhs {
+                carry += node.val;
+                rhs = node.next;
             }
-            carry = sum / 10;
-            if let Some(node) = current {
-                node.next = Some(Box::new(ListNode::new(sum % 10)));
-                current = node.next.as_mut();
-            }
+
+            tail.next = Some(Box::new(ListNode::new(carry % 10)));
+            carry = carry / 10;
+            tail = tail.next.as_mut().unwrap();
         }
         if carry > 0 {
-            current.unwrap().next = Some(Box::new(ListNode::new(carry)));
+            tail.next = Some(Box::new(ListNode::new(carry)));
         }
 
-        head.unwrap().next
+        head.next
     }
 }
 // @lc code=end

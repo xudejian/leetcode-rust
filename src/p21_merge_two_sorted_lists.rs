@@ -75,37 +75,22 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let mut head = Some(Box::new(ListNode::new(0)));
-        let mut cur = head.as_mut();
-        let mut n1 = l1;
-        let mut n2 = l2;
-        loop {
-            let mut node = cur.unwrap();
-            match (n1, n2) {
-                (Some(mut l), Some(mut r)) => {
-                    if l.val < r.val {
-                        n1 = l.next.take();
-                        node.next = Some(l);
-                        n2 = Some(r);
-                    } else {
-                        n2 = r.next.take();
-                        node.next = Some(r);
-                        n1 = Some(l);
-                    }
-                }
-                (None, Some(r)) => {
-                    node.next = Some(r);
-                    break;
-                }
-                (Some(l), None) => {
-                    node.next = Some(l);
-                    break;
-                }
-                (None, None) => break,
+        let (mut lhs, mut rhs) = (l1, l2);
+        let mut head = Box::new(ListNode::new(0));
+        let mut tail = &mut head;
+        while let (Some(l), Some(r)) = (lhs.as_ref(), rhs.as_ref()) {
+            if l.val <= r.val {
+                tail.next = lhs;
+                tail = tail.next.as_mut().unwrap();
+                lhs = tail.next.take();
+            } else {
+                tail.next = rhs;
+                tail = tail.next.as_mut().unwrap();
+                rhs = tail.next.take();
             }
-            cur = node.next.as_mut();
         }
-        head.unwrap().next
+        tail.next = if lhs.is_some() { lhs } else { rhs };
+        head.next
     }
 }
 // @lc code=end
