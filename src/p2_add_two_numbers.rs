@@ -124,57 +124,40 @@ mod tests {
         let l3 = Solution::add_two_numbers(l1, l2);
 
         assert!(l3.is_some());
-        assert_eq!(l3.unwrap().val, 0);
+        let l4 = l3.unwrap();
+        assert_eq!(l4.val, 0);
+        assert_eq!(l4.next, None);
+
         let l1 = Some(Box::new(ListNode::new(0)));
         let l2 = Some(Box::new(ListNode::new(1)));
         let l3 = Solution::add_two_numbers(l1, l2);
 
-        assert_eq!(l3.unwrap().val, 1);
-    }
-
-    #[test]
-    fn test_list_node_from() {
-        let l1 = ListNode::from(vec![1, 2]);
-        assert!(l1.is_some());
-        let n1 = l1.unwrap();
-        assert_eq!(n1.val, 1);
-        assert!(n1.next.is_some());
-        let nn = n1.next.unwrap();
-        assert_eq!(nn.val, 2);
-    }
-
-    #[test]
-    fn test_list_as_vec() {
-        let l1 = ListNode::from(vec![1, 2]);
-        let vals = ListNode::as_vec(l1);
-        assert_eq!(vals, vec![1, 2]);
+        assert!(l3.is_some());
+        let l4 = l3.unwrap();
+        assert_eq!(l4.val, 1);
+        assert_eq!(l4.next, None);
     }
 
     #[test]
     fn test_add_two_numbers_example() {
         assert_eq!(
-            ListNode::as_vec(Solution::add_two_numbers(
-                ListNode::from(vec![2, 4, 3]),
-                ListNode::from(vec![5, 6, 4])
-            )),
-            vec![7, 0, 8]
+            vec![7, 0, 8],
+            Solution::add_two_numbers(ListNode::from(vec![2, 4, 3]), ListNode::from(vec![5, 6, 4]))
+                .expect("[7, 0, 8]")
         );
         assert_eq!(
-            ListNode::as_vec(Solution::add_two_numbers(
-                ListNode::from(vec![0]),
-                ListNode::from(vec![0])
-            )),
-            vec![0]
+            vec![0],
+            Solution::add_two_numbers(ListNode::from(vec![0]), ListNode::from(vec![0]))
+                .expect("[0]")
         );
 
-        // Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-        // Output: [8,9,9,9,0,0,0,1]
         assert_eq!(
-            ListNode::as_vec(Solution::add_two_numbers(
+            vec![8, 9, 9, 9, 0, 0, 0, 1],
+            Solution::add_two_numbers(
                 ListNode::from(vec![9, 9, 9, 9, 9, 9, 9]),
-                ListNode::from(vec![9, 9, 9, 9])
-            )),
-            vec![8, 9, 9, 9, 0, 0, 0, 1]
+                ListNode::from(vec![9, 9, 9, 9]),
+            )
+            .expect("[8, 9, 9, 9, 0, 0, 0, 1]")
         );
     }
 }

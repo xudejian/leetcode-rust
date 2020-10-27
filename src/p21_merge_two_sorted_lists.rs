@@ -75,12 +75,6 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        if l1.is_none() {
-            return l2;
-        }
-        if l2.is_none() {
-            return l1;
-        }
         let mut head = Some(Box::new(ListNode::new(0)));
         let mut cur = head.as_mut();
         let mut n1 = l1;
@@ -123,18 +117,15 @@ mod tests {
 
     #[test]
     fn test_merge_two_lists() {
-        let nil: Vec<i32> = Vec::new();
         assert_eq!(
             vec![1, 1, 2, 3, 4, 4],
-            ListNode::as_vec(Solution::merge_two_lists(
-                ListNode::from(vec![1, 2, 4]),
-                ListNode::from(vec![1, 3, 4])
-            ))
+            Solution::merge_two_lists(ListNode::from(vec![1, 2, 4]), ListNode::from(vec![1, 3, 4]))
+                .expect("[1, 1, 2, 3, 4, 4]")
         );
-        assert_eq!(nil, ListNode::as_vec(Solution::merge_two_lists(None, None)));
+        assert_eq!(Solution::merge_two_lists(None, None), None);
         assert_eq!(
             vec![0],
-            ListNode::as_vec(Solution::merge_two_lists(None, ListNode::from(vec![0])))
+            Solution::merge_two_lists(None, Some(Box::new(ListNode::new(0)))).expect("[0]")
         );
     }
 }
