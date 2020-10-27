@@ -88,16 +88,16 @@ impl Solution {
             return 0;
         }
         let mut left = 0;
-        let mut right = len - 1;
+        let mut right = len;
         while left < right {
             if nums[left] == val {
-                nums.swap(left, right);
                 right -= 1;
+                nums[left] = nums[right];
             } else {
                 left += 1;
             }
         }
-        1 + left as i32
+        right as i32
     }
 }
 // @lc code=end
@@ -110,11 +110,23 @@ mod test {
     fn test_remove_element() {
         let mut nums: Vec<i32> = vec![3, 2, 2, 3];
         assert_eq!(2, Solution::remove_element(&mut nums, 3));
-        assert_eq!(vec![2, 2, 3, 3], nums);
+        assert_eq!(vec![2, 2, 2, 3], nums);
 
         nums = vec![0, 1, 2, 2, 3, 0, 4, 2];
         assert_eq!(5, Solution::remove_element(&mut nums, 2));
-        assert_eq!(vec![0, 1, 4, 0, 3, 2, 2, 2], nums);
+        assert_eq!(vec![0, 1, 4, 0, 3, 0, 4, 2], nums);
+
+        nums = vec![0, 1, 2, 2, 3, 0, 4, 2];
+        assert_eq!(5, Solution::remove_element(&mut nums, 2));
+        assert_eq!([0, 1, 4, 0, 3], nums[0..5]);
+
+        nums = vec![1];
+        assert_eq!(0, Solution::remove_element(&mut nums, 1));
+        assert_eq!(vec![1], nums);
+
+        nums = vec![1, 1];
+        assert_eq!(0, Solution::remove_element(&mut nums, 1));
+        assert_eq!(vec![1, 1], nums);
 
         nums = Vec::new();
         assert_eq!(0, Solution::remove_element(&mut nums, 0));
