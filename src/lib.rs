@@ -6,6 +6,7 @@ mod p20_valid_parentheses;
 mod p21_merge_two_sorted_lists;
 mod p26_remove_duplicates_from_sorted_array;
 mod p27_remove_element;
+pub mod p28_implement_str_str;
 mod p2_add_two_numbers;
 mod p7_reverse_integer;
 mod p9_palindrome_number;
