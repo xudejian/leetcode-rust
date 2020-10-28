@@ -25,3 +25,9 @@ name = "strstr"
 path = "fuzz_targets/strstr.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "search_insert"
+path = "fuzz_targets/search_insert.rs"
+test = false
+doc = false
