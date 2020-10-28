@@ -56,18 +56,18 @@ impl Solution {
             return 0;
         }
         // [1, 3, 5, 6], 0
-        let (mut left, mut right) = (0i32, (nums.len() - 1) as i32);
-        while left <= right {
+        let (mut left, mut right) = (0, nums.len());
+        while left < right {
             let mid = (right + left) / 2;
-            if nums[mid as usize] == target {
+            if nums[mid] == target {
                 return mid as i32;
-            } else if nums[mid as usize] < target {
+            } else if nums[mid] < target {
                 left = mid + 1;
             } else {
-                right = mid - 1;
+                right = mid;
             }
         }
-        left
+        left as i32
     }
 }
 // @lc code=end
