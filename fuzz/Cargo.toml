@@ -1,0 +1,27 @@
+
+[package]
+name = "leetcode-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.3"
+rand = "0.7.3"
+
+[dependencies.leetcode]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "strstr"
+path = "fuzz_targets/strstr.rs"
+test = false
+doc = false
