@@ -72,22 +72,30 @@ impl Solution {
         if n < 2 {
             return "1".to_string();
         }
-        let s = Self::count_and_say(n - 1);
-        let mut count = vec![0];
-        let mut nums = vec!['!'];
+        let s = if n > 30 {
+            Self::count_and_say(29)
+        } else {
+            Self::count_and_say(n - 1)
+        };
+        let mut count = 0;
+        let mut num = '!';
         let mut chars = s.chars();
+        let mut res = String::new();
         while let Some(c) = chars.next() {
-            if c == nums[nums.len() - 1] {
-                count[nums.len() - 1] += 1;
+            if c != num {
+                if num != '!' {
+                    res.push_str(count.to_string().as_str());
+                    res.push(num);
+                }
+                count = 1;
+                num = c;
             } else {
-                nums.push(c);
-                count.push(1);
+                count += 1;
             }
         }
-        let mut res = String::new();
-        for i in 1..nums.len() {
-            res.push_str(count[i].to_string().as_str());
-            res.push(nums[i]);
+        if num != '!' {
+            res.push_str(count.to_string().as_str());
+            res.push(num);
         }
         res
     }
