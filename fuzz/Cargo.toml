@@ -31,3 +31,9 @@ name = "search_insert"
 path = "fuzz_targets/search_insert.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "count_and_say"
+path = "fuzz_targets/count_and_say.rs"
+test = false
+doc = false
