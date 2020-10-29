@@ -12,6 +12,7 @@ pub mod p35_search_insert_position;
 pub mod p38_count_and_say;
 mod p53_maximum_subarray;
 mod p58_length_of_last_word;
+mod p66_plus_one;
 mod p7_reverse_integer;
 mod p9_palindrome_number;
 
