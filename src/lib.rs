@@ -15,6 +15,7 @@ mod p58_length_of_last_word;
 mod p66_plus_one;
 mod p67_add_binary;
 mod p69_sqrt_x;
+mod p70_climbing_stairs;
 mod p7_reverse_integer;
 mod p9_palindrome_number;
 
