@@ -10,6 +10,7 @@ pub mod p28_implement_str_str;
 mod p2_add_two_numbers;
 pub mod p35_search_insert_position;
 pub mod p38_count_and_say;
+mod p53_maximum_subarray;
 mod p7_reverse_integer;
 mod p9_palindrome_number;
 
