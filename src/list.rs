@@ -13,14 +13,13 @@ impl ListNode {
 
     #[allow(dead_code)]
     pub fn from(vals: Vec<i32>) -> Option<Box<ListNode>> {
-        let mut head = Some(Box::new(ListNode::new(0)));
-        let mut current = head.as_mut();
+        let mut head = ListNode::new(0);
+        let mut current = &mut head;
         for x in vals.iter() {
-            let mut next = current.unwrap();
-            next.next = Some(Box::new(ListNode::new(*x)));
-            current = next.next.as_mut();
+            current.next = Some(Box::new(ListNode::new(*x)));
+            current = current.next.as_mut().unwrap();
         }
-        head.unwrap().next
+        head.next
     }
 }
 
@@ -77,12 +76,12 @@ mod test {
     fn test_listnode_eq() {
         assert_eq!(ListNode::new(1), vec![1]);
         assert_eq!(vec![1], ListNode::new(1));
-        assert_eq!(
-            ListNode {
-                next: Some(Box::new(ListNode::new(2))),
-                val: 1
-            },
-            vec![1, 2]
-        );
+        let node = ListNode {
+            next: Some(Box::new(ListNode::new(2))),
+            val: 1,
+        };
+
+        assert_eq!(node, vec![1, 2]);
+        assert_eq!(node, vec![1, 2]);
     }
 }
