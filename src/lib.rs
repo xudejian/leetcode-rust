@@ -18,6 +18,7 @@ mod p69_sqrt_x;
 mod p70_climbing_stairs;
 mod p7_reverse_integer;
 pub mod p83_remove_duplicates_from_sorted_list;
+mod p88_merge_sorted_array;
 mod p9_palindrome_number;
 
 #[cfg(test)]
