@@ -1,4 +1,5 @@
 pub mod list;
+mod p100_same_tree;
 mod p13_roman_to_integer;
 mod p14_longest_common_prefix;
 pub mod p1_two_sum;
@@ -20,6 +21,7 @@ mod p7_reverse_integer;
 pub mod p83_remove_duplicates_from_sorted_list;
 mod p88_merge_sorted_array;
 mod p9_palindrome_number;
+pub mod tree;
 
 #[cfg(test)]
 mod tests {
