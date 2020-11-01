@@ -50,7 +50,7 @@ impl TreeNode {
         s
     }
 
-    fn from(data: &str) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn from(data: &str) -> Option<Rc<RefCell<TreeNode>>> {
         if data.len() < 3 {
             return None;
         }
