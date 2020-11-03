@@ -5,6 +5,7 @@ mod p104_maximum_depth_of_binary_tree;
 mod p107_binary_tree_level_order_traversal_ii;
 mod p108_convert_sorted_array_to_binary_search_tree;
 mod p110_balanced_binary_tree;
+mod p111_minimum_depth_of_binary_tree;
 mod p13_roman_to_integer;
 mod p14_longest_common_prefix;
 pub mod p1_two_sum;
