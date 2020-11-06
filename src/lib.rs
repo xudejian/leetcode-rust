@@ -8,6 +8,7 @@ mod p110_balanced_binary_tree;
 mod p111_minimum_depth_of_binary_tree;
 mod p112_path_sum;
 mod p118_pascals_triangle;
+mod p119_pascals_triangle_ii;
 mod p13_roman_to_integer;
 mod p14_longest_common_prefix;
 pub mod p1_two_sum;
