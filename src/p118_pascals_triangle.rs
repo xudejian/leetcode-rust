@@ -42,9 +42,6 @@ impl Solution {
     pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
         let nrows = num_rows as usize;
         let mut res: Vec<Vec<i32>> = Vec::with_capacity(nrows);
-        if num_rows < 1 {
-            return res;
-        }
         let mut row: Vec<i32> = Vec::with_capacity(nrows);
         for i in 0..nrows {
             row.push(1);
