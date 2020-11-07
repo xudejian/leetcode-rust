@@ -12,6 +12,7 @@ mod p119_pascals_triangle_ii;
 mod p121_best_time_to_buy_and_sell_stock;
 mod p122_best_time_to_buy_and_sell_stock_ii;
 mod p125_valid_palindrome;
+mod p136_single_number;
 mod p13_roman_to_integer;
 mod p14_longest_common_prefix;
 pub mod p1_two_sum;
