@@ -104,51 +104,18 @@ impl Solution {
         while let Some(c) = chars.next() {
             let v = match c {
                 'I' => 1,
-                'X' => {
-                    if prev == 1 {
-                        8
-                    } else {
-                        10
-                    }
-                }
-                'C' => {
-                    if prev == 10 {
-                        80
-                    } else {
-                        100
-                    }
-                }
-                'V' => {
-                    if prev == 1 {
-                        3
-                    } else {
-                        5
-                    }
-                }
-                'L' => {
-                    if prev == 10 {
-                        30
-                    } else {
-                        50
-                    }
-                }
-                'D' => {
-                    if prev == 100 {
-                        300
-                    } else {
-                        500
-                    }
-                }
-                'M' => {
-                    if prev == 100 {
-                        800
-                    } else {
-                        1000
-                    }
-                }
+                'X' => 10,
+                'C' => 100,
+                'V' => 5,
+                'L' => 50,
+                'D' => 500,
+                'M' => 1000,
                 _ => 0,
             };
             val += v;
+            if prev < v {
+                val -= prev + prev;
+            }
             prev = v;
         }
         return val;
